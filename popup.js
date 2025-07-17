@@ -28,7 +28,11 @@ document.addEventListener("DOMContentLoaded", function () {
     chrome.tabs.query({}, function (tabs) {
       for (const tab of tabs) {
         if (tab.id) {
-          chrome.tabs.sendMessage(tab.id, { type: "TOGGLE_ASSIST_LINE", enabled })
+          chrome.tabs.sendMessage(tab.id, { type: "TOGGLE_ASSIST_LINE", enabled }, function (response) {
+            if (chrome.runtime.lastError) {
+              // 可选：console.warn('消息发送失败：', chrome.runtime.lastError.message);
+            }
+          })
         }
       }
     })
@@ -80,11 +84,19 @@ document.addEventListener("DOMContentLoaded", function () {
     chrome.tabs.query({}, function (tabs) {
       for (const tab of tabs) {
         if (tab.id) {
-          chrome.tabs.sendMessage(tab.id, {
-            type: "UPDATE_RECTANGLE_SIZE",
-            width: width,
-            height: height,
-          })
+          chrome.tabs.sendMessage(
+            tab.id,
+            {
+              type: "UPDATE_RECTANGLE_SIZE",
+              width: width,
+              height: height,
+            },
+            function (response) {
+              if (chrome.runtime.lastError) {
+                // 可选：console.warn('消息发送失败：', chrome.runtime.lastError.message);
+              }
+            }
+          )
         }
       }
     })
