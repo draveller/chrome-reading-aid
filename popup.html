@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>辅助线开关</title>
+    <style>
+      body {
+        min-width: 220px;
+        min-height: 160px;
+        padding: 16px 18px 16px 18px;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background: #fff;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+      .switch-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .switch-label {
+        font-size: 18px;
+        font-weight: bold;
+      }
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 44px;
+        height: 24px;
+      }
+      .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: 0.4s;
+        border-radius: 24px;
+      }
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 20px;
+        width: 20px;
+        left: 2px;
+        bottom: 2px;
+        background-color: white;
+        transition: 0.4s;
+        border-radius: 50%;
+      }
+      input:checked + .slider {
+        background-color: #2196f3;
+      }
+      input:checked + .slider:before {
+        transform: translateX(20px);
+      }
+      .size-container {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .size-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .size-label {
+        font-size: 14px;
+        font-weight: bold;
+      }
+      .size-value {
+        font-size: 13px;
+        color: #666;
+      }
+      .size-slider {
+        width: 100%;
+      }
+      .size-input {
+        width: 54px;
+        padding: 2px 4px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        font-size: 13px;
+        margin-left: 8px;
+      }
+      .size-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="switch-container">
+        <span class="switch-label">辅助线</span>
+        <label class="switch">
+          <input
+            type="checkbox"
+            id="toggleSwitch"
+          />
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="size-container">
+        <div class="size-header">
+          <span class="size-label">宽度</span>
+          <span
+            class="size-value"
+            id="widthValue"
+            >1000px</span
+          >
+        </div>
+        <div class="size-row">
+          <input
+            type="range"
+            id="widthSlider"
+            class="size-slider"
+            min="200"
+            max="2000"
+            value="1000"
+          />
+          <input
+            type="number"
+            id="widthInput"
+            class="size-input"
+            min="200"
+            max="2000"
+            value="1000"
+          />
+        </div>
+      </div>
+      <div class="size-container">
+        <div class="size-header">
+          <span class="size-label">高度</span>
+          <span
+            class="size-value"
+            id="heightValue"
+            >100px</span
+          >
+        </div>
+        <div class="size-row">
+          <input
+            type="range"
+            id="heightSlider"
+            class="size-slider"
+            min="50"
+            max="500"
+            value="100"
+          />
+          <input
+            type="number"
+            id="heightInput"
+            class="size-input"
+            min="50"
+            max="500"
+            value="100"
+          />
+        </div>
+      </div>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>

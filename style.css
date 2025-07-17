@@ -1,0 +1,12 @@
+/* style.css - 阅读辅助线样式 */
+
+.reading-guide-line {
+    position: fixed;   /* 固定在视口中，不随滚动条移动 */
+    left: 0;           /* 从视口最左侧开始 */
+    width: 100%;       /* 宽度占满整个视口 */
+    height: 2px;       /* 线条的粗细 */
+    background-color: red; /* 线条的颜色 */
+    z-index: 9999;     /* 确保线条在所有内容之上 */
+    pointer-events: none; /* 确保线条不捕获鼠标事件，让鼠标能正常与网页内容交互 */
+    display: none;     /* 默认隐藏，直到鼠标移动时才显示 */
+  }
